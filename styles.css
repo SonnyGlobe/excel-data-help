@@ -193,6 +193,8 @@ input, select, textarea {
 input:focus, select:focus, textarea:focus { outline: 2px solid var(--brand); outline-offset: 1px; border-color: var(--brand); }
 .form-note { margin: 0; font-size: .9rem; font-weight: 600; color: var(--brand-dark); min-height: 1.2em; }
 .form-note.error { color: #b3261e; }
+.form-note a, .fineprint a { color: inherit; font-weight: 700; border-bottom: 1px solid currentColor; text-decoration: none; }
+.form-note a:hover, .fineprint a:hover { opacity: .75; }
 
 /* honeypot field — present for bots, invisible for humans */
 .hp {
