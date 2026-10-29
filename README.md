@@ -1,21 +1,23 @@
-# Landing Page — beginner friendly
+# Sonny Ortiz — Excel & Data Services landing page
 
-A single-page site you can publish free on **GitHub Pages**. No framework, no build step,
-no npm install. Three files: `index.html`, `styles.css`, `script.js`.
+A single-page freelance site you can publish free on **GitHub Pages**. No framework, no build step,
+no npm install. Files: `index.html`, `styles.css`, `script.js`, `listing-copy.md`.
 
 ---
 
 ## 1. Make it yours (10 minutes)
 
-Open `index.html` and change these:
+The page is already written for **Excel automation / data cleanup / database help**. Change only
+what isn't true for you:
 
 | Where | Change it to |
 |---|---|
-| `<title>` and `<meta name="description">` | Your name + what you actually sell |
-| `.brand` text ("Your Name") | Your name or brand, in the header and footer |
-| Hero `<h1>` and `.lede` | One clear sentence about the specific thing you sell |
-| "The Starter Kit" card | Your real product name and real price |
-| The three `.card` articles | Your real offers (delete the ones you don't offer) |
+| `<title>` and `<meta name="description">` | Keep if the services match; adjust if you drop one |
+| Hero `<h1>` and `.lede` | Keep — it already says "database manager by day, evenings and weekends" |
+| Hero card ($35 Cleanup Sprint) | Your real headline offer and real price |
+| The four `.card` articles | Delete any service you can't confidently deliver |
+| `#rates` table rows | Your real prices and real turnaround times |
+| `#skills` grid | Only tools you've actually used at work |
 | `#proof` blockquotes | Real buyer feedback only — never invented reviews |
 | `action="https://formspree.io/f/YOUR_FORM_ID"` | Your Formspree ID (free signup at formspree.io) |
 
@@ -86,14 +88,18 @@ That URL is the one you put in your bio, on Gumroad, on Fiverr, in DMs.
 
 ## 5. What to do after it's live
 
-- **Do not** send traffic to a page with placeholder text. Publish only when the hero,
-  the offer, and the price are real.
-- One offer, one price, one button beats a page with six vague offers.
-- Add a real product first, then come back and update this page.
-- Optional custom domain (~$10/yr): GitHub Pages → **Custom domain**, then follow GitHub's
-  DNS instructions at your registrar.
+- Wire up Formspree **before** you publish, or the contact form silently drops enquiries.
+- Publish only when the prices and turnaround times are ones you can actually honour.
+- The page is a **hub, not the source of orders**. Your first orders come from Fiverr/Upwork and
+  from people you already know — see `listing-copy.md` for paste-ready gig text and the reply
+  template that wins jobs.
+- Put the live URL in your Fiverr/Upwork profile, email signature, and any FB group replies.
+- Optional custom domain (~$10/yr): GitHub Pages → **Custom domain**, then follow GitHub's DNS
+  instructions at your registrar.
 
 ## Things this page deliberately does *not* claim
 
-No income promises, no fake testimonials, no countdown timers, no "limited spots". Those
-convert worse over time and get pages flagged. The copy here is honest by design — keep it that way.
+No income promises, no fake testimonials, no countdown timers, no "limited spots". Those convert
+worse over time and get marketplace accounts flagged. The copy here is honest by design — keep it
+that way. The `#proof` quotes are placeholders on purpose: replace them with real buyer messages,
+even if you only have two.

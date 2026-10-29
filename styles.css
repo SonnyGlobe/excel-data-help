@@ -140,6 +140,24 @@ a  { color: var(--brand-dark); }
 .ticks li::before { content: "– "; color: var(--brand); }
 .link { font-weight: 600; font-size: .9rem; text-decoration: none; color: var(--brand-dark); border-bottom: 1px solid currentColor; }
 
+/* four-up service cards */
+.cards-four { grid-template-columns: repeat(4, 1fr); }
+.price-line { margin: 0 0 1rem; font-size: .95rem; }
+.price-line b { font-size: 1.15rem; font-weight: 800; color: var(--ink); }
+
+/* rates table */
+.table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: var(--radius); background: #fff; }
+table.rates { width: 100%; border-collapse: collapse; min-width: 640px; font-size: .92rem; }
+table.rates th, table.rates td { text-align: left; padding: .9rem 1.1rem; border-bottom: 1px solid var(--line); }
+table.rates th { background: var(--bg-alt); font-weight: 600; font-size: .82rem; text-transform: uppercase; letter-spacing: .06em; color: var(--ink-soft); }
+table.rates tbody tr:last-child td { border-bottom: 0; }
+table.rates tbody tr:hover { background: var(--bg-alt); }
+
+/* skills grid */
+.skill-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; margin-bottom: 1.5rem; }
+.skill { border-left: 3px solid var(--brand); padding-left: 1rem; }
+.skill p { color: var(--ink-soft); font-size: .92rem; margin: 0; }
+
 /* steps */
 .steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; }
 .steps li { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 1.25rem; font-size: .93rem; color: var(--ink-soft); }
@@ -188,6 +206,11 @@ input:focus, select:focus, textarea:focus { outline: 2px solid var(--brand); out
 .reveal.in { opacity: 1; transform: none; }
 
 /* ---------------- responsive ---------------- */
+@media (max-width: 1000px) {
+  .cards-four { grid-template-columns: 1fr 1fr; }
+  .skill-grid { grid-template-columns: 1fr 1fr; }
+}
+
 @media (max-width: 900px) {
   .hero-grid { grid-template-columns: 1fr; }
   .cards, .quotes { grid-template-columns: 1fr 1fr; }
@@ -195,7 +218,7 @@ input:focus, select:focus, textarea:focus { outline: 2px solid var(--brand); out
 }
 
 @media (max-width: 640px) {
-  .cards, .quotes, .steps { grid-template-columns: 1fr; }
+  .cards, .cards-four, .quotes, .steps, .skill-grid { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr; }
 
   .burger { display: flex; }
