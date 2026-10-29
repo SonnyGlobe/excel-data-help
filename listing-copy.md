@@ -3,6 +3,19 @@
 The landing page is your hub. Your first orders will almost certainly come from a marketplace,
 so copy these into Fiverr / Upwork and keep the prices identical to the page.
 
+**Live page:** `https://sonnyglobe.github.io/excel-data-help/`
+
+> ⚠️ **Where that URL may go.** Fiverr and Upwork both scan gig text and will flag or reject a
+> listing containing an email address, phone number, or a link that pulls a buyer off-platform —
+> it's one of the fastest ways to get a new account restricted. So:
+> - ✅ Put the URL in your **profile website/portfolio field** (Fiverr: Profile → Website;
+>   Upwork: Profile → Portfolio/Website). Both allow it.
+> - ✅ Refer to it in words without a link: "my portfolio is linked on my profile".
+> - ❌ Do **not** paste `sonnyboyortiz@gmail.com` or the github.io link into a gig title, gig
+>   description, package description, or first message. The copy below has no contact details on
+>   purpose — keep it that way until an order exists.
+> - The email address lives on **your own landing page** (it's already there), which is fine.
+
 ---
 
 ## Gig title options (Fiverr, ≤80 chars)

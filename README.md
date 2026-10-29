@@ -64,55 +64,59 @@ and the `/ajax/` prefix in `script.js`. Not required to launch.
 
 ---
 
-## 3. Push it to GitHub
+## 3. Push it to GitHub (already done)
 
-Run these in the terminal, from this folder:
+This folder is already a git repo, already connected to GitHub, and already pushed:
+
+- **Repo:** https://github.com/SonnyGlobe/excel-data-help (Public, branch `main`)
+- **Remote:** `origin` → `https://github.com/SonnyGlobe/excel-data-help.git`
+- **Git identity (this repo only):** `SonnyGlobe` / `222128485+SonnyGlobe@users.noreply.github.com`
+  so the commits show up on your GitHub profile
+
+After you edit anything, publish it with:
 
 ```powershell
-git init
 git add .
-git commit -m "Add landing page"
+git commit -m "what you changed"
+git push
 ```
 
-Now create the repo on GitHub in the browser:
-
-1. Go to https://github.com/new
-2. **Repository name:** `landing-page` (or your own name)
-3. Choose **Public**, do **not** tick "add a README" (one already exists), click **Create repository**
-4. Copy the two commands GitHub shows you and run them — they look like:
+GitHub sign-in is handled by the **GitHub CLI** (`gh`), installed on this machine and authorised
+for the `SonnyGlobe` account. If `gh` ever asks you to log in again, run:
 
 ```powershell
-git remote add origin https://github.com/YOUR_USERNAME/landing-page.git
-git branch -M main
-git push -u origin main
+gh auth login --hostname github.com --git-protocol https --web
 ```
 
-Replace `YOUR_USERNAME` with your GitHub username. If GitHub asks for credentials, use a
-**Personal Access Token** (GitHub → Settings → Developer settings → Personal access tokens →
-Fine-grained, with **Contents: Read and write** permission) as the password — GitHub no longer
-accepts your account password for `git push`.
+and type the one-time code GitHub shows you. Never paste a code someone else gives you.
 
 ---
 
-## 4. Turn on GitHub Pages (free hosting)
+## 4. GitHub Pages (already on)
 
-1. Open your repo on GitHub → **Settings** → **Pages** (left sidebar)
-2. **Source:** `Deploy from a branch`
-3. **Branch:** `main` / `/ (root)` → **Save**
-4. Wait 1–2 minutes, then visit:
+Pages is enabled for this repo: **Deploy from a branch** → `main` / `/ (root)`.
+GitHub rebuilds the site automatically within about a minute of every `git push`.
+
+Live URL — this is the one to put in your bio, your Fiverr/Upwork profile, your email signature
+and any FB group replies:
 
 ```
-https://YOUR_USERNAME.github.io/landing-page/
+https://sonnyglobe.github.io/excel-data-help/
 ```
 
-That URL is the one you put in your bio, on Gumroad, on Fiverr, in DMs.
+Check the build status any time with:
+
+```powershell
+gh api repos/SonnyGlobe/excel-data-help/pages --jq "{status:.status, url:.html_url}"
+```
 
 ---
 
-## 5. What to do after it's live
+## 5. What to do now that it's live
 
-- Submit the contact form **once after deploying** and click FormSubmit's activation link, or the
-  first real client enquiry bounces.
+- Submit the contact form **once** at the live URL and click FormSubmit's activation link, or the
+  first real client enquiry bounces. (FormSubmit was returning HTTP 521 when this was last tested;
+  if it fails, the page shows a pre-filled email link instead — see section 2.)
 - Publish only when the prices and turnaround times are ones you can actually honour.
 - The page is a **hub, not the source of orders**. Your first orders come from Fiverr/Upwork and
   from people you already know — see `listing-copy.md` for paste-ready gig text and the reply
