@@ -13,7 +13,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="styles.css" />
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%237c5cff'/%3E%3Ctext x='16' y='22' font-size='16' text-anchor='middle' fill='white' font-family='sans-serif'%3EY%3C/text%3E%3C/svg%3E" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%237c5cff'/%3E%3Ctext x='16' y='22' font-size='16' text-anchor='middle' fill='white' font-family='sans-serif'%3ES%3C/text%3E%3C/svg%3E" />
 </head>
 <body>
 
@@ -335,11 +335,19 @@
     <div class="wrap narrow">
       <h2>Get in touch</h2>
       <p class="section-lede">
-        This form sends to your own inbox. Sign up free at <a href="https://formspree.io" target="_blank" rel="noopener">formspree.io</a>,
-        then replace the <code>action="..."</code> line in <code>index.html</code> with your Formspree URL.
+        Two ways to reach me. <b>Fastest:</b> email
+        <a href="mailto:sonnyboyortiz@gmail.com">sonnyboyortiz@gmail.com</a> with a screenshot of your
+        file. <b>Or</b> use the form below — it forwards to the same inbox through
+        <a href="https://formsubmit.co" target="_blank" rel="noopener">FormSubmit</a> (free, no account).
+        The <b>first</b> submission sends an activation link to that inbox; click it once and every
+        message after that arrives automatically. If the form ever fails, it gives you a pre-filled
+        email link so nothing is lost.
       </p>
 
-      <form class="form" id="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <form class="form" id="contact-form" action="https://formsubmit.co/sonnyboyortiz@gmail.com" method="POST">
+        <!-- honeypot: bots fill this in, people never see it -->
+        <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
         <div class="field">
           <label for="name">Your name</label>
           <input id="name" name="name" type="text" autocomplete="name" required placeholder="Alex" />
@@ -381,6 +389,11 @@
 
         <button class="btn btn-primary btn-block" type="submit">Send message</button>
         <p class="form-note" id="form-note" role="status" aria-live="polite"></p>
+        <p class="fineprint">
+          Prefer email? Write to
+          <a href="mailto:sonnyboyortiz@gmail.com">sonnyboyortiz@gmail.com</a> — include a screenshot
+          of your file and I'll quote it.
+        </p>
         <p class="fineprint">
           No spam, no newsletters sold to third parties. Your message is used only to reply to you.
         </p>

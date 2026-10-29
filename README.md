@@ -19,7 +19,7 @@ what isn't true for you:
 | `#rates` table rows | Your real prices and real turnaround times |
 | `#skills` grid | Only tools you've actually used at work |
 | `#proof` blockquotes | Real buyer feedback only — never invented reviews |
-| `action="https://formspree.io/f/YOUR_FORM_ID"` | Your Formspree ID (free signup at formspree.io) |
+| `action="https://formsubmit.co/sonnyboyortiz@gmail.com"` | Already wired to your inbox — change only if you switch emails |
 
 Then open `styles.css` and change the three brand lines to re-colour the whole page:
 
@@ -36,8 +36,31 @@ Then open `styles.css` and change the three brand lines to re-colour the whole p
 Double-click `index.html`, or right-click it in VS Code and choose **Open with Live Server**
 if you have that extension.
 
-Until you replace `YOUR_FORM_ID`, the contact form shows a notice instead of sending.
-That is intentional — it means the page is not silently swallowing your visitors' messages.
+### Activate the contact form (do this once)
+
+The form posts to FormSubmit, which forwards enquiries to **sonnyboyortiz@gmail.com**. No account,
+no API key, no cost.
+
+1. After the page is live, submit the form yourself once as a test.
+2. Gmail will receive an **activation email** from FormSubmit. Open it and click the activation link.
+3. Every submission after that lands in your inbox automatically (check Spam once, then mark "not spam").
+
+If you ever change the address, update it in **two** places: the `<form action="...">` in
+`index.html` and the `EMAIL` constant in `script.js`, then submit once again to re-activate.
+
+The form also has a hidden `_honey` honeypot field that catches bot spam.
+
+### If the form ever fails
+
+FormSubmit is a free third-party service and it does have outages (it was returning HTTP 521 when
+this page was last checked). The page is built so a visitor never gets stuck: if the submission
+fails, the message area shows a **pre-filled `mailto:` link** containing everything they typed, plus
+your address in plain text. Email is the primary route anyway — the copy puts
+`sonnyboyortiz@gmail.com` above the form.
+
+Optional upgrade if you want a more reliable form backend: **Formspree** (free tier, 50 submissions
+/month). You sign up, create a form, and replace the `action` with `https://formspree.io/f/XXXXXXX`
+and the `/ajax/` prefix in `script.js`. Not required to launch.
 
 ---
 
@@ -88,7 +111,8 @@ That URL is the one you put in your bio, on Gumroad, on Fiverr, in DMs.
 
 ## 5. What to do after it's live
 
-- Wire up Formspree **before** you publish, or the contact form silently drops enquiries.
+- Submit the contact form **once after deploying** and click FormSubmit's activation link, or the
+  first real client enquiry bounces.
 - Publish only when the prices and turnaround times are ones you can actually honour.
 - The page is a **hub, not the source of orders**. Your first orders come from Fiverr/Upwork and
   from people you already know — see `listing-copy.md` for paste-ready gig text and the reply

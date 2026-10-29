@@ -49,43 +49,89 @@
   if (year) year.textContent = String(new Date().getFullYear());
 
   /* 4. Contact form -------------------------------------------------
-     NOTE: the form's action must be your own Formspree endpoint before
-     submissions will actually reach you. Until then this shows a notice
-     instead of failing silently. */
+     Endpoint: https://formsubmit.co/sonnyboyortiz@gmail.com
+     FormSubmit forwards every submission to that inbox. The FIRST submission
+     triggers an activation email to it — click that link once and later
+     messages arrive automatically. The /ajax/ variant returns JSON so the page
+     can show a confirmation without navigating away. */
   var form = document.getElementById("contact-form");
   var note = document.getElementById("form-note");
+  var EMAIL = "sonnyboyortiz@gmail.com";
 
   if (form && note) {
     form.addEventListener("submit", function (e) {
-      var action = form.getAttribute("action") || "";
+      e.preventDefault();
 
-      if (action.indexOf("YOUR_FORM_ID") !== -1) {
-        e.preventDefault();
-        note.textContent =
-          "Not wired up yet: replace YOUR_FORM_ID in index.html with your Formspree ID, then reload.";
+      // Honeypot: a filled _honey means a bot. Pretend to succeed, send nothing.
+      var honey = form.elements["_honey"];
+      if (honey && honey.value) {
+        note.classList.remove("error");
+        note.textContent = "Sent. I'll reply by email.";
+        form.reset();
         return;
       }
 
+      var action = (form.getAttribute("action") || "").replace(
+        /^https:\/\/formsubmit\.co\//,
+        "https://formsubmit.co/ajax/"
+      );
+
+      note.classList.remove("error");
       note.textContent = "Sending…";
 
-      // Progressive enhancement: submit with fetch so we can show a message
-      // without navigating away. Formspree still works without this.
-      e.preventDefault();
+      /* If the form service is down or the inbox is not activated yet, build a
+         mailto: link pre-filled with whatever the visitor already typed, so the
+         enquiry is never lost. */
+      function fail(reason) {
+        note.classList.add("error");
+        note.textContent = "";
+        note.appendChild(document.createTextNode(
+          "Couldn't send automatically" + (reason ? " (" + reason + ")" : "") +
+          ". Use this direct email link, or write to " + EMAIL + ":"
+        ));
+        note.appendChild(document.createTextNode(" "));
+
+        var d = new FormData(form);
+        var body =
+          (d.get("message") || "") +
+          "\n\n—\nName: " + (d.get("name") || "") +
+          "\nEmail: " + (d.get("email") || "") +
+          "\nInterested in: " + (d.get("interest") || "") +
+          "\nBudget: " + (d.get("budget") || "");
+
+        var a = document.createElement("a");
+        a.href =
+          "mailto:" + EMAIL +
+          "?subject=" + encodeURIComponent("New project enquiry — " + (d.get("name") || "website form")) +
+          "&body=" + encodeURIComponent(body);
+        a.textContent = "Open it in your email app instead";
+        note.appendChild(a);
+      }
+
       fetch(action, {
         method: "POST",
-        headers: { Accept: "application/json" },
-        body: new FormData(form)
+        headers: { Accept: "application/json", "Content-Type": "application/json" },
+        body: JSON.stringify(Object.fromEntries(new FormData(form)))
       })
         .then(function (res) {
-          if (res.ok) {
-            note.textContent = "Sent. I'll reply by email — check your inbox too.";
+          return res.json()
+            .catch(function () { return {}; })
+            .then(function (data) { return { ok: res.ok, data: data }; });
+        })
+        .then(function (result) {
+          var msg = (result.data && (result.data.message || result.data.error)) || "";
+
+          if (result.ok && result.data && result.data.success) {
+            note.textContent = "Sent. I'll reply to your email shortly.";
             form.reset();
-          } else {
-            note.textContent = "Something went wrong. Email me directly instead.";
+            return;
           }
+
+          // FormSubmit returns an error before the inbox is activated.
+          fail(msg);
         })
         .catch(function () {
-          note.textContent = "Couldn't send right now. Try again or email me directly.";
+          fail("network");
         });
     });
   }
